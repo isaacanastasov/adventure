@@ -9,11 +9,27 @@ env = jinja2.Environment(
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
-        logging.info('Program Ran')
+        logging.info('Program Ran1')
         # Step 3 Use the jinja Environment to get our file
         template = env.get_template('templates/start.html')
         self.response.write(template.render())
 
+class RunHandler(webapp2.RequestHandler):
+    def get(self):
+        logging.info('Program Ran2')
+        # Step 3 Use the jinja Environment to get our file
+        template = env.get_template('templates/run.html')
+        self.response.write(template.render())
+
+class GramHandler(webapp2.RequestHandler):
+    def get(self):
+        logging.info('Program Ran3')
+        # Step 3 Use the jinja Environment to get our file
+        template = env.get_template('templates/gram.html')
+        self.response.write(template.render())
+
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
+    ('/run', RunHandler),
+    ('/gram', GramHandler),
 ], debug = True)
